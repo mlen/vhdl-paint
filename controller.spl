@@ -1,0 +1,15 @@
+[Inputs]
+clk
+rst
+btn_l
+btn_r
+mouse_rdy
+=x_in[7:0]=
+=y_in[7:0]=
+[Outputs]
+data
+wr
+=x_out[7:0]=
+=y_out[7:0]=
+=addr[15:0]=
+[BiDir]

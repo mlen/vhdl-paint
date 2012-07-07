@@ -1,0 +1,52 @@
+\section{Cel i zakres projektu}
+\label{sec:cel}
+
+Celem projektu było zaimplementowanie modułu obsługi myszy za pomocą protokołu
+PS/2 w układzie FPGA przy użyciu języka VHDL.
+\vspace{1em}
+
+Finalną wersją projektu jest prosta aplikacja graficzna typu \texttt{Paint}, pozwalająca
+na rysowanie punktow za pomocą myszy na ekranie monitora \texttt{VGA}, przechowująca 
+mapę obrazu w pamięci \texttt{RAM}.
+\vspace{1em}
+
+Projekt został wykonany na układzie Xilinx Spartan 3E Starter (XC3S500E
+w~obudowie FG320). Dodatkowym sprzętem wykorzystanym w projekcie jest monitor \texttt{CRT}
+ze złaczem \texttt{D-SUB} oraz mysz podłączana za pmocą portu \texttt{PS/2}.
+
+\section{Teoria problemu}
+\label{sec:teoria}
+\subsection{Protokół PS/2}
+Protokół PS/2 oparty jest na dwukierunkowej transmisji szeregowej.
+Wykorzystywane są dwie linie –- linia danych oraz linia zegara. Do każdej z nich
+podłączony jest rezystor podciągający,
+\vspace{1em}
+
+Podczas odbioru danych od myszy to mysz generuje przebieg zegarowy. Linia danych
+znajduje się w stanie stabilnym podczas opadającego zbocza sygnału zegarowego.
+Ramka składa się z bitu startu (\texttt{0}), ośmiu bitów danych (od najmłodszego
+do najstarszego), bitu parzystości oraz bitu stopu (\texttt{1}).
+\vspace{1em}
+
+Aby nadać bajt urządzenie sterujące transmisją musi wymusić stan \texttt{0} na
+linii zegara przez czas $100 \mu$s. Po upływie tego czasu mysz zaczyna generować
+sygnał zegarowy. Następnie na linię danych podawane są bity ramki w formacie
+identycznym jak w przypadku odbioru. Sygnał na linii danych powinien być
+stabilny podczas opadającego zbocza zegarowego. Do implementacji transmisji
+dwukierunkowej należy użyć bufora trójstanowego.
+\vspace{1em}
+
+Mysz zaczyna pracę w trybie, w którym nie wysyła żadnych danych. Należy ją
+zainicjalizować wysyłając bajt \texttt{0xF4}. Mysz odpowiada bajtem
+potwierdzenia oraz zaczyna wysyłać pakiet danych, który składa się z trzech
+bajtów. Zawiera on informacje o stanie przycisków oraz przesunięciu w
+osi X oraz Y. Informacje o przesunięciach zapisane są jako liczba binarna U2.
+
+\subsection{Wyświetlacz VGA}
+W projekcie wykorzystany został również wyświetlacz CRT w trybie
+640$\times$480@60Hz i pozwalał na wyświetlanie do ośmiu kolorów, jednak w
+projekcie wykorzystane zostały tylko kolory biały (zapalony piksel) oraz czarny
+(zgaszony piksel). Aby wyświetlić obraz należało wygenerować przebieg zegarowy o
+częstotliwości 25MHz oraz sterować sygnałami synchronizacji poziomej, pionowej
+oraz bitami odpowiadającymi za wyświetlany kolor.
+

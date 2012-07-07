@@ -1,0 +1,77 @@
+# soldered 50MHz Clock.
+NET "clk" LOC = "C9" | IOSTANDARD = LVTTL;
+NET "clk" PERIOD = 20.0ns HIGH 50%;
+
+# Ignore cross-clock domain data paths in timing analysis
+#NET "Clk50"  TNM = "TNM_Clk50";
+#NET "ClkSys" TNM = "TNM_ClkSys";
+#TIMESPEC "TS_12" = FROM "TNM_ClkSys" TO "TNM_Clk50"  TIG;
+#TIMESPEC "TS_13" = FROM "TNM_Clk50"  TO "TNM_ClkSys" TIG;
+
+#
+# Push-buttons (Press = Hi)
+#
+#NET "btn_north" LOC = "V4"  | IOSTANDARD = LVTTL | PULLDOWN;
+#NET "btn_east"  LOC = "H13" | IOSTANDARD = LVTTL | PULLDOWN;
+NET "rst" LOC = "K17" | IOSTANDARD = LVTTL | PULLDOWN;
+#NET "start"  LOC = "D18" | IOSTANDARD = LVTTL | PULLDOWN;
+
+#
+# Slide switches (Up = Hi)
+#
+#NET "SW<0>" LOC = "L13" | IOSTANDARD = LVTTL | PULLUP;
+#NET "SW<1>" LOC = "L14" | IOSTANDARD = LVTTL | PULLUP;
+#NET "SW<2>" LOC = "H18" | IOSTANDARD = LVTTL | PULLUP;
+#NET "SW<3>" LOC = "N17" | IOSTANDARD = LVTTL | PULLUP;
+
+#
+# Rotary encoder
+#
+#NET "ROT_A"       LOC = "K18" | IOSTANDARD = LVTTL | PULLUP;
+#NET "ROT_B"       LOC = "G18" | IOSTANDARD = LVTTL | PULLUP;
+#NET "ROT_CENTER"  LOC = "V16" | IOSTANDARD = LVTTL | PULLDOWN;
+
+#
+# Simple LEDs (Hi = On)
+#
+#NET "btn_r" LOC = "F12" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 4;
+#NET "btn_m" LOC = "E12" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 4;
+#NET "btn_l" LOC = "E11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 4;
+#NET "test" LOC = "F11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 4;
+#NET "leds(4)" LOC = "C11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 4;
+#NET "leds(5)" LOC = "D11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 4;
+#NET "leds(6)" LOC = "E9"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 4;
+#NET "leds(7)" LOC = "F9"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 4;
+
+#
+# PS/2 port
+#
+NET "PS2_Data" LOC = "G13" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8;
+NET "PS2_Clock"  LOC = "G14" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8;
+
+#
+# VGA
+#
+NET "vga_c(2)"  LOC = "H14" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8;
+NET "vga_c(1)"  LOC = "H15" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8;
+NET "vga_c(0)"  LOC = "G15" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8;
+NET "vga_hs" LOC = "F15" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8;
+NET "vga_vs" LOC = "F14" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8;
+
+# RS-232 Serial Port: DCE
+#NET "RS232_RXD" LOC = "R7" | IOSTANDARD = LVTTL ;
+#NET "RS232_TXD" LOC = "M14" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = SLOW ;
+# RS-232 Serial Port: DTE
+#NET "RS232_RXD" LOC = "U8" | IOSTANDARD = LVTTL ;
+#NET "RS232_TXD" LOC = "M13" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = SLOW ;
+
+# ==== Character LCD (LCD) ====
+#NET "LCD_E" LOC = "M18" | IOSTANDARD = LVCMOS33 | DRIVE = 4 | SLEW = SLOW ;
+#NET "LCD_RS" LOC = "L18" | IOSTANDARD = LVCMOS33 | DRIVE = 4 | SLEW = SLOW ;
+#NET "LCD_RW" LOC = "L17" | IOSTANDARD = LVCMOS33 | DRIVE = 4 | SLEW = SLOW ;
+# LCD data connections are shared with StrataFlash connections SF_D<11:8>
+#NET "LCD_D<0>" LOC = "R15" | IOSTANDARD = LVCMOS33 | DRIVE = 4 | SLEW = SLOW ;
+#NET "LCD_D<1>" LOC = "R16" | IOSTANDARD = LVCMOS33 | DRIVE = 4 | SLEW = SLOW ;
+#NET "LCD_D<2>" LOC = "P17" | IOSTANDARD = LVCMOS33 | DRIVE = 4 | SLEW = SLOW ;
+#NET "LCD_D<3>" LOC = "M15" | IOSTANDARD = LVCMOS33 | DRIVE = 4 | SLEW = SLOW ;
+#NET "SF_CE" LOC = "D16" | IOSTANDARD = LVCMOS33 | DRIVE = 4 | SLEW = SLOW ;

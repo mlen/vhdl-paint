@@ -1,0 +1,24 @@
+\section{Podsumowanie}
+\label{sec:podsumowanie}
+
+Mimo pozytywnego efektu końcowego naszego projektu, uwidocznionego na
+zdjęciu~\ref{fig:dziala}, można w nim wprowadzić szereg usprawnień.  Pierwszym
+i najważniejszym czynnikiem jest zablokowanie ekranu, przez co kursor myszy nie
+będzie zapętlał się, tylko zatrzymywał na krawędzi ekranu ograniczonej rozmiarem
+pamięci \texttt{RAM}.
+
+\vspace{1em}
+W projekcie wykorzystanie pamięci przy ekranie 256$\times$256 pikseli wynosi
+zaledwie 20\%. Daje nam to możliwość stworzenia większego ekranu 512$\times$512,
+lub wykorzystania 8 kolorów.
+
+\vspace{1em}
+Kolejnym usprawnieniem powinna być możliwość czyszczenia całego ramu, a nie jak
+obecnie wymazywanie poszczególnych pikseli.
+
+\vspace{1em}
+Ostatecznie, nazwy modułów w kodzie powinny zostać zmienione, na bardziej
+czytelne dla użytkownika kodu, lecz z powodu nieprzewidywalnych zachowań
+środowiska programistycznego \texttt{Xilinx}, nie zdecydowaliśmy się na ten
+krok.
+

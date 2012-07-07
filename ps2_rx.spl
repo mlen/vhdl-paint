@@ -1,0 +1,10 @@
+[Inputs]
+clk
+reset
+ps2d
+ps2c
+rx_en
+[Outputs]
+rx_done
+=dout[7:0]=
+[BiDir]

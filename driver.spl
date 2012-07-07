@@ -1,0 +1,16 @@
+[Inputs]
+clk
+reset
+tx_done
+rx_done
+=rx_data[7:0]=
+[Outputs]
+wr
+ready
+btn_l
+btn_m
+btn_r
+=x[7:0]=
+=y[7:0]=
+=tx_data[7:0]=
+[BiDir]
